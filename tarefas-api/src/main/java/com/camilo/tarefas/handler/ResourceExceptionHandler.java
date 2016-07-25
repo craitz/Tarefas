@@ -45,19 +45,6 @@ public class ResourceExceptionHandler {
 		return ResponseEntity.status(HttpStatus.CONFLICT).body(erro);
 	}
 	
-	@ExceptionHandler(DataIntegrityViolationException.class)
-	public ResponseEntity<DetalhesErro> handlerDataIntegrityViolationException
-				(DataIntegrityViolationException e, HttpServletRequest request) {
-	
-		DetalhesErro erro = new DetalhesErro();
-		erro.setTitulo("Requisição inválida.");
-		erro.setStatus(400L);
-		erro.setTimestamp(System.currentTimeMillis());
-		erro.setMensagemDesenvolvedor(urlErros + "/400");
-		
-		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(erro);
-	}
-	
 	@ExceptionHandler(HttpMessageNotReadableException.class)
 	public ResponseEntity<DetalhesErro> handlerHttpMessageNotReadableException
 				(HttpMessageNotReadableException e, HttpServletRequest request) {
@@ -74,9 +61,9 @@ public class ResourceExceptionHandler {
 	@ExceptionHandler(MethodArgumentNotValidException.class)
 	public ResponseEntity<DetalhesErro> handlerMethodArgumentNotValidException
 				(MethodArgumentNotValidException e, HttpServletRequest request) {
-	
+		
 		DetalhesErro erro = new DetalhesErro();
-		erro.setTitulo("Argumento inválido na requisição.");
+		erro.setTitulo(e.getBindingResult().getFieldError().getDefaultMessage());
 		erro.setStatus(400L);
 		erro.setTimestamp(System.currentTimeMillis());
 		erro.setMensagemDesenvolvedor(urlErros + "/400");
