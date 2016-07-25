@@ -2,9 +2,9 @@ package com.camilo.tarefas.domain;
 
 public enum StatusTarefa {
 
-	PARADA("Parada"),
-	INICIADA("Iniciada"),
-	CONCLUIDA("Concluída");
+	PARADA   ("em espera"),
+	INICIADA ("em aberto"),
+	CONCLUIDA("concluída");
 	
 	private String descricao;
 	
