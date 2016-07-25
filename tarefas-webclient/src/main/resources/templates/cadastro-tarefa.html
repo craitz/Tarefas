@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout-links">
+	
+	<head>
+		<title>Cadastro de Tarefas</title>
+	</head>	
+
+	<section layout:fragment="conteudo">
+		<form class="form-horizontal" method="POST" th:action="@{${EXECUTA_CADASTRO_TAREFA_LINK}}" th:object="${tarefa}">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<div class="clearfix">
+						Cadastrar tarefa
+						<a class="btn btn-link cr-link-panel" 
+							th:href="@{${PESQUISA_TAREFA_LINK}}">Voltar para a lista de tarefas</a>
+					</div>
+				</div>		
+				
+				<div class="panel-body">
+<!-- 					<div class="form-group"> -->
+<!-- 						<label for="descricao" class="col-sm-2 control-label"  -->
+<!-- 							th:text="Descrição"></label> -->
+<!-- 						<div class="col-sm-6"> -->
+<!-- 							<input class="form-control" th:field="*{descricao}" -->
+<!-- 								placeholder="digite a descrição de tarefa..."/> -->
+<!-- 						</div> -->
+<!-- 						<div class="col-sm-2"> -->
+<!-- 							<button type="submit" class=" btn btn-md btn-primary">Salvar</button> -->
+<!-- 						</div> -->
+<!-- 					</div> -->
+					<div class="form-group">
+						<div class="col-sm-6">
+							<div class="input-group">
+								<input class="form-control" placeholder="Digite a descrição da tarefa..."
+									autofocus="autofocus" th:field="*{descricao}"/>	
+								<span class="input-group-btn">
+									<button type="submit" class="btn btn-primary"
+										title="Salvar" rel="tooltip" data-placement="top">
+										<i class="glyphicon glyphicon-ok"></i>
+									</button>
+								</span>
+							</div>
+						</div>			
+					</div>
+				</div>
+			</div>			
+	<!-- 			<div layout:include="dialogo-confirmacao-exclusao"></div> -->
+		</form>
+	</section>
+</html>

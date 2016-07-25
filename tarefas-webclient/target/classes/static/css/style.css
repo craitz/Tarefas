@@ -1,0 +1,94 @@
+/*Tela grande*/
+@media (min-width: 768px) {
+
+	.panel-default {
+		margin-left: 10px;
+		margin-right: 10px;
+	}
+	
+	.alert {
+		margin-left: 10px;
+		margin-right: 10px;
+	}
+	
+ }
+
+.pagination {
+	margin-left: 10px;
+	margin-top: 2px;
+}	
+
+.cr-btn-group {
+/* 	margin-top: 2px; */
+/* 	margin-right: 10px; */
+}
+
+.cr-navbar {
+	background-color: rgb(40, 95, 173);
+/* 	height: 50px; */
+}	
+
+.cr-container-fluid {
+	}	
+
+.cr-navbar-brand {
+	padding-top: 0px;
+	padding-left: 10px;
+}	
+
+.cr-navbar-header {
+}
+
+/* .cr-label { */
+/* 	fixed-width: 70px; */
+/* } */
+
+.cr-link-panel {
+ 	float: right;
+ 	padding: 0px;
+ 	margin-top: 0px;
+/* 	font-family: "Copperplate Gothic"; */
+/*  font-size: 12px; */
+}
+
+.cr-titulo-panel {
+/* 	float: left; */
+/* 	padding: 1px;	 */
+/* 	font-family: "Copperplate Gothic"; */
+/*  font-size: 12px; */
+}
+
+.cr-thead{
+    background-color: rgb(120, 120, 120);
+    color: white;	
+}
+
+/* tr:hover td { */
+/* 	background: rgb(255, 245, 225); */
+/* } */
+
+/*layout-links*/
+.btn-login {
+ 	margin-top: 30px;
+}
+
+/*layout-links*/
+.btn-logout {
+/* 	margin-right: 10px; */
+/* 	margin-top: 9px; */
+}
+
+.href-cadastro {
+/* 	padding-top: 15px; */
+/* 	margin-right: 10px; */
+/* 	color: rgb(200, 200, 200); */
+}
+
+.btn-entrar {
+ 	margin-top: 30px;
+}
+
+.msg-cadastro-finalizado {
+	margin-top: 20px;
+	margin-left: 20px;
+}
