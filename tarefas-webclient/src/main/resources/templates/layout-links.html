@@ -17,14 +17,10 @@
 
 	<body 
 		th:with="IMAGE_LINK='/images/task.png', 
-			LOGIN_FORM_LINK='/login',
 			CADASTRO_FORM_LINK='/cadastro',
-			EXECUTA_LOGIN_LINK='/logar',
-			HOME_USER_LINK='/home',
 			CADASTRO_TAREFA_FORM_LINK='/tarefas/cadastro',
 			PESQUISA_TAREFA_LINK='/tarefas',
 			EXECUTA_CADASTRO_TAREFA_LINK='/tarefas',
-			LOGOUT_LINK='/logout',
 			HOME_LINK='/',
 			INDEX_LINK='/tarefas/index'">
 			
@@ -37,23 +33,6 @@
 				</a>
 			</div>
 			
-<!-- 			<div th:if="${modo != 'login'}"> -->
-<!-- 				<form method="POST" class="navbar-form navbar-right" th:action="@{${LOGIN_FORM_LINK}}"> -->
-<!-- 					<div class="form-group"> -->
-<!-- 						<div class="nav navbar-nav navbar-right"> -->
-<!-- 							<input class="btn btn-primary btn-sm btn-login" type="submit" value="Login"/> -->
-<!-- 						</div> -->
-<!-- 					</div> -->
-<!-- 				</form> -->
-<!-- 				<span><a class="href-cadastro navbar-right" th:href="@{${CADASTRO_FORM_LINK}}">Cadastre-se</a></span> -->
-<!-- 			</div> -->
-						
-<!-- 			<div th:if="${modo == 'login'}"> -->
-<!-- 				<div class="nav navbar-nav navbar-right"> -->
-<!-- 					<a th:href="@{${LOGOUT_LINK}}" class="btn btn-danger btn-logout">Logout</a> -->
-<!-- 				</div> -->
-<!-- 			</div> -->
-<!-- 		  </div> -->
 		</nav>
 
  		<span th:text="${logado}"></span>
@@ -67,7 +46,7 @@
 		<script th:src="@{/js/bootstrap.min.js}"></script>
 		<script th:src="@{/js/bootstrap-datepicker.min.js}"></script>
 		<script th:src="@{/js/bootstrap-datepicker.pt-BR.min.js}"></script>
-		<script th:src="@{/js/treinos.js}"></script>
+		<script th:src="@{/js/tarefas.js}"></script>
 		
 	</body>
 </html>

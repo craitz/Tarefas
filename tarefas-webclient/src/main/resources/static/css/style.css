@@ -51,6 +51,11 @@
 /*  font-size: 12px; */
 }
 
+.cr-span {
+ 	font-family: "showcard gothic"; 
+	font-size: 18px; 
+}
+
 .cr-titulo-panel {
 /* 	float: left; */
 /* 	padding: 1px;	 */

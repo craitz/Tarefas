@@ -28,7 +28,7 @@ public class TarefasService {
 		}
 
 		tarefa.setDataCadastro(new Date());
-		tarefa.setStatus(StatusTarefa.PARADA);
+		tarefa.setStatus(StatusTarefa.PENDENTE);
 
 		return tarefasRepository.save(tarefa);
 	}
@@ -51,6 +51,35 @@ public class TarefasService {
 
 		//garante que o objeto vai ser atualizado e não criado
 		tarefa.setId(id);
+
+		tarefasRepository.save(tarefa);
+	}
+
+	public void concluir(Long id) {		
+		Tarefa tarefa = buscar(id, true);
+		tarefa.setDataFinalizacao(new Date());
+		tarefa.setStatus(StatusTarefa.CONCLUIDA);
+
+		tarefasRepository.save(tarefa);
+	}
+
+	public void iniciar(Long id) {		
+		Tarefa tarefa = buscar(id, true);
+		tarefa.setStatus(StatusTarefa.INICIADA);
+
+		tarefasRepository.save(tarefa);
+	}
+
+	public void pender(Long id) {		
+		Tarefa tarefa = buscar(id, true);
+		tarefa.setStatus(StatusTarefa.PENDENTE);
+
+		tarefasRepository.save(tarefa);
+	}
+
+	public void cancelar(Long id) {		
+		Tarefa tarefa = buscar(id, true);
+		tarefa.setStatus(StatusTarefa.CANCELADA);
 
 		tarefasRepository.save(tarefa);
 	}

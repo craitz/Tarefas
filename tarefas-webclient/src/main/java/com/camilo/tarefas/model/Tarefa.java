@@ -2,7 +2,6 @@ package com.camilo.tarefas.model;
 
 import java.util.Date;
 
-import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -11,7 +10,6 @@ public class Tarefa {
 	
 	private Long id;
 	
-	@NotEmpty(message = "O campo [descrição] é obrigatório.")
 	private String descricao;
 	
 	@DateTimeFormat(pattern = "dd/MM/yyyy")

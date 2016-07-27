@@ -2,9 +2,10 @@ package com.camilo.tarefas.model;
 
 public enum StatusTarefa {
 
-	PARADA   ("em espera"),
-	INICIADA ("em aberto"),
-	CONCLUIDA("concluída");
+	PENDENTE ("pendente"),
+	INICIADA ("iniciada"),
+	CONCLUIDA("concluída"),
+	CANCELADA("cancelada");
 	
 	private String descricao;
 	

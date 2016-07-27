@@ -37,59 +37,66 @@
 								<td class="text-center" th:text="${tarefa.id}"></td>
 			  					<td th:text="${tarefa.descricao}"></td>
 			  					<td class="text-center" th:text="${{tarefa.dataCadastro}}"></td>
-			  					<td class="text-center" th:text="${{tarefa.dataFinalizacao}}"></td>
+			  					<td class="text-center" th:text="${{tarefa.dataFinalizacao}}" th:attr="data-finaliza=${tarefa.id}"></td>
 			  					
-			  					<td class="text-center">
-									<span class="label cr-label" th:if="${tarefa.status.descricao == 'em espera'}" 
-										th:text="${tarefa.status.descricao}" th:classappend="label-danger"></span>			  						
-									<span class="label cr-label" th:if="${tarefa.status.descricao == 'em aberto'}" 
-										th:text="${tarefa.status.descricao}" th:classappend="label-warning"></span>			  						
+			  					<td class="text-center" th:attr="data-role=${tarefa.id}">
+									<span class="label cr-label" th:if="${tarefa.status.descricao == 'pendente'}" 
+										th:text="${tarefa.status.descricao}" th:classappend="label-primary"></span>	
+												  						
+									<span class="label cr-label" th:if="${tarefa.status.descricao == 'iniciada'}" 
+										th:text="${tarefa.status.descricao}" th:classappend="label-warning"></span>	
+												  						
 									<span class="label cr-label" th:if="${tarefa.status.descricao == 'concluída'}" 
 										th:text="${tarefa.status.descricao}" th:classappend="label-success"></span>			  						
+
+									<span class="label cr-label" th:if="${tarefa.status.descricao == 'cancelada'}" 
+										th:text="${tarefa.status.descricao}" th:classappend="label-danger"></span>			  						
 			  					</td>
 			  					
 			  					<td class="text-center">
-			  						<a class="btn btn-link btn-xs"
-			  							title="Editar" rel="tooltip" data-placement="top">
+			  						<a th:id="'bt-edita_'+${tarefa.id}" class="btn js-edita btn-xs" th:href="@{{path}/{id}(path=${EXECUTA_CADASTRO_TAREFA_LINK}, 
+			  								id=${tarefa.id})}" th:classappend="${tarefa.status.descricao == 'concluída' || tarefa.status.descricao == 'cancelada'} ? hidden"
+			  								title="Editar" rel="tooltip" data-placement="top">
 			  							<span class="glyphicon glyphicon-pencil"></span>
 			  						</a>
-			  						<a class="btn btn-link btn-xs"
+			  						<a class="btn btn-link btn-xs" data-toggle="modal" data-target="#confirmacaoModal"
+			  								th:attr="data-id=${tarefa.id}, data-descricao=${tarefa.descricao}"
 			  							title="Excluir" rel="tooltip" data-placement="top">
 			  							<span class="glyphicon glyphicon-remove"></span>
 			  						</a>
-			  						<a class="btn btn-link btn-xs disabled"
+			  						<a th:id="'bt-inicia_'+${tarefa.id}" class="btn js-inicia btn-xs" th:href="@{{path}/{id}/abertura(path=${EXECUTA_CADASTRO_TAREFA_LINK}, 
+			  								id=${tarefa.id})}" th:classappend="${tarefa.status.descricao != 'pendente'} ? hidden" th:attr="data-id=${tarefa.id}"
 			  							title="Iniciar" rel="tooltip" data-placement="top">
 			  							<span class="glyphicon glyphicon-play"></span>
 			  						</a>
-			  						<a class="btn btn-link btn-xs"
-			  							title="Finalizar" rel="tooltip" data-placement="top">
+			  						<a th:id="'bt-para_'+${tarefa.id}" class="btn js-para btn-xs" th:href="@{{path}/{id}/reset(path=${EXECUTA_CADASTRO_TAREFA_LINK}, 
+			  								id=${tarefa.id})}" th:classappend="${tarefa.status.descricao != 'iniciada'} ? hidden" th:attr="data-id=${tarefa.id}"
+			  							title="Parar" rel="tooltip" data-placement="top">
+			  							<span class="glyphicon glyphicon-stop"></span>
+			  						</a>
+			  						<a th:id="'bt-finaliza_'+${tarefa.id}" class="btn js-finaliza btn-xs" th:href="@{{path}/{id}/finalizacao(path=${EXECUTA_CADASTRO_TAREFA_LINK}, 
+			  								id=${tarefa.id})}" th:classappend="${tarefa.status.descricao != 'iniciada'} ? hidden" th:attr="data-id=${tarefa.id}" 
+			  								title="Finalizar" rel="tooltip" data-placement="top">
 			  							<span class="glyphicon glyphicon-check"></span>
 			  						</a>
-
-<!-- 			  						<a class="btn btn-link btn-xs" th:href="@{/titulos/{codigo}(codigo=${titulo.codigo})}" -->
-<!-- 			  							title="Editar" rel="tooltip" data-placement="top"> -->
-<!-- 			  							<span class="glyphicon glyphicon-pencil"></span> -->
-<!-- 			  						</a> -->
-<!-- 			  						<a class="btn btn-link btn-xs" data-toggle="modal" data-target="#confirmacaoExclusaoModal" -->
-<!-- 			  								th:attr="data-codigo=${titulo.codigo}, data-descricao=${titulo.descricao}" -->
-<!-- 			  								title="Excluir" rel="tooltip" data-placement="top"> -->
-<!-- 			  							<span class="glyphicon glyphicon-remove"></span> -->
-<!-- 			  						</a> -->
-<!-- 			  						<a class="btn btn-link btn-xs js-atualizar-status" th:if="${titulo.pendente}" -->
-<!-- 			  								th:attr="data-codigo=${titulo.codigo}" -->
-<!-- 			  								title="Receber" rel="tooltip" data-placement="top" -->
-<!-- 			  								th:href="@{/titulos/{codigo}/receber(codigo=${titulo.codigo})}"> -->
-<!-- 			  							<span class="glyphicon glyphicon-check"></span> -->
-<!-- 			  						</a> -->
+			  						<a th:id="'bt-cancela_'+${tarefa.id}" class="btn js-cancela btn-xs" th:href="@{{path}/{id}/cancelamento(path=${EXECUTA_CADASTRO_TAREFA_LINK}, 
+			  								id=${tarefa.id})}" th:classappend="${tarefa.status.descricao == 'concluída' || tarefa.status.descricao == 'cancelada'} ? hidden" 
+			  								th:attr="data-id=${tarefa.id}" title="Cancelar" rel="tooltip" data-placement="top">
+			  							<span class="glyphicon glyphicon-ban-circle"></span>
+			  						</a>
 			  					</td>			  					
-							</tr>			  				
+							</tr>
+			  				<tr>
+			  					<td colspan="6" th:if="${#lists.isEmpty(tarefas)}">Nenhuma tarefa foi encontrada</td>
+			  				</tr>										  				
 			  			</tbody>
 					</table>
 					
 				</div>
 			</div>
-		</div>			
-<!-- 			<div layout:include="dialogo-confirmacao-exclusao"></div> -->
+		</div>
+					
+		<div layout:include="dialogo-confirmacao-exclusao"></div>
 			
 	</section>
 </html>

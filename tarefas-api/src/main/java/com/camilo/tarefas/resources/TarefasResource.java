@@ -63,4 +63,32 @@ public class TarefasResource {
 		tarefasService.deletar(id);
 		return ResponseEntity.noContent().build();
 	}
+	
+	@CrossOrigin
+	@RequestMapping(value = "/{id}/finalizacao", method = RequestMethod.PUT)
+	public ResponseEntity<Void> concluir(@PathVariable("id") Long id) {
+		tarefasService.concluir(id);
+		return ResponseEntity.noContent().build();
+	}
+
+	@CrossOrigin
+	@RequestMapping(value = "/{id}/abertura", method = RequestMethod.PUT)
+	public ResponseEntity<Void> iniciar(@PathVariable("id") Long id) {
+		tarefasService.iniciar(id);
+		return ResponseEntity.noContent().build();
+	}
+
+	@CrossOrigin
+	@RequestMapping(value = "/{id}/reset", method = RequestMethod.PUT)
+	public ResponseEntity<Void> pender(@PathVariable("id") Long id) {
+		tarefasService.pender(id);
+		return ResponseEntity.noContent().build();
+	}
+
+	@CrossOrigin
+	@RequestMapping(value = "/{id}/cancelamento", method = RequestMethod.PUT)
+	public ResponseEntity<Void> cancelar(@PathVariable("id") Long id) {
+		tarefasService.cancelar(id);
+		return ResponseEntity.noContent().build();
+	}
 }

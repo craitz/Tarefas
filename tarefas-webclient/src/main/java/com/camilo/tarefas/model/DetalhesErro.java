@@ -1,10 +1,12 @@
 package com.camilo.tarefas.model;
 
+import java.util.Date;
+
 public class DetalhesErro {
 
 	private String titulo;
 	private Long status;
-	private Long timestamp;
+	private Date timestamp;
 	private String mensagemDesenvolvedor;
 
 	public String getTitulo() {
@@ -23,11 +25,11 @@ public class DetalhesErro {
 		this.status = status;
 	}
 
-	public Long getTimestamp() {
+	public Date getTimestamp() {
 		return timestamp;
 	}
 
-	public void setTimestamp(Long timestamp) {
+	public void setTimestamp(Date timestamp) {
 		this.timestamp = timestamp;
 	}
 
