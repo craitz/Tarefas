@@ -1,4 +1,4 @@
-# tarefas
+# Tarefas
 
 1) Tarefas API: API RESTFul num Web Service com Spring Data e Spring Security efetuando operações num banco de dados H2 com JPA + Hibernate, rodando num servidor de aplicações Tomcat 8.
 
