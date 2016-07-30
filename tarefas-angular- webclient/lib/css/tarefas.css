@@ -1,0 +1,143 @@
+body {
+	/*font-family: Lithos Pro; */
+}
+
+.panel-default {
+	margin-top: 10px;
+	margin-left: 10px;
+	margin-right: 10px;
+	background-color: rgb(47, 49, 41);
+	border: 0;
+	box-shadow: none;
+}
+
+.panel-heading {
+    background-color: rgb(70, 70, 70) !important;
+    color: rgb(235, 235, 235) !important;
+    font-size: 18px;
+    font-style: italic;
+    border: 0;
+	 box-shadow: none;
+}
+
+.cr-thead{
+    background-color: rgb(55, 55, 55);
+    font-style: italic;
+}
+
+.tools-column {
+    background-color: rgb(55, 55, 55);
+ }	
+
+.btn-new {
+ 	float: right;
+ 	color: rgb(140, 188, 43); 
+   height: 22px;
+	padding: 0px;
+ 	margin-top: 2px;
+}
+
+.btn-remove {
+ 	float: right;
+ 	color: rgb(237, 75, 72); 
+   height: 22px;
+	padding: 0px;
+ 	margin-top: 2px;
+ 	margin-right: 10px;
+}
+
+.btn-salvar {
+ 	color: rgb(244, 112, 35); 
+   height: 22px;
+	padding: 0px;
+ 	margin-top: 5px;
+}
+
+.badge {
+ 	background-color: rgb(244, 112, 35) !important; 
+	margin-left: 10px;
+}
+
+.input-novo {
+	background-color: rgb(180, 180, 180);	
+}
+
+.label-primary {
+ 	background-color: rgb(9, 123, 237);
+}
+
+.nova-tarefa {
+	height: 50px;
+ 	outline: thin solid rgb(244, 112, 35); 
+	background-color: rgb(100, 100, 100);
+}
+
+.novo-campo {
+	margin-top: 8px;		
+}
+
+.table {
+	margin-top: 15px;	
+}
+
+.btn-search {
+	background-color: rgb(100, 100, 100);
+	color: rgb(235, 235, 235);
+	border-color: rgb(204, 204, 204);
+	
+}
+.btn-busca {
+	width: 345px;
+}
+
+.tf-busca {
+	background-color: rgb(100, 100, 100);
+	color: rgb(235, 235, 235);
+	background: url(../images/search.png);
+	padding-left: 40px;
+}
+
+.selecionado {
+	background-color: rgb(244, 112, 35);
+	color: rgb(254, 234, 223);
+}
+
+.tf-a {
+	color: rgb(235, 235, 235);
+}
+
+.tf-row {
+	background-color: rgb(39, 40, 34);
+	color: rgb(160, 160, 160);
+}
+
+   table.borderless td,table.borderless th {
+		border: none !important;
+}
+
+.tool-icon-sel {
+	color: rgb(235, 235, 235);
+}
+
+.tool-icon {
+	color: rgb(190, 190, 190);
+}
+
+.label-sel {
+	background-color: rgb(235, 235, 235);
+	color: rgb(244, 112, 35) !important;
+}
+
+.label-block {
+    font-weight: bold;
+    display: block;
+    padding: 6px 12px;
+    margin: 0;
+    border: 1px solid transparent;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25em;
+    width: 100%;
+}

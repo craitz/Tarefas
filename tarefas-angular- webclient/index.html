@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html ng-app="tarefas">
+<head>
+	<title>Gestão de tarefas</title>
+	<script src="lib/angular/angular.js"></script>
+	<script src="lib/angular/angular-messages.js"></script>
+	<script src="lib/angular/angular-locale_pt-br.js"></script>
+	<script src="lib/js/tarefas.js"></script>
+	<link rel="stylesheet" type="text/css" href="lib/bootstrap/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="lib/css/tarefas.css">
+</head>
+<body ng-controller="tarefasCtrl">
+<div ng-bind-html="htmlTest"></div>
+{{tarefa}}
+
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<div class="clearfix">
+			<div>
+				Relação de tarefas cadastradas<span class="badge">{{totalTarefas}}</span>
+				<a class="btn btn-lg btn-new" title="Adicionar tarefa" ng-click="setNovaTarefa()">
+					<span class="glyphicon glyphicon-plus-sign"></span>
+				</a>
+				<a class="btn btn-lg btn-remove" title="Remove tarefas selecionadas" ng-click="deletar()">
+					<span class="glyphicon glyphicon-minus-sign"></span>
+				</a>
+			</div>
+		</div>
+	</div>
+	<div class="panel-body">
+		<div class="btn-busca">
+			<input type="text" autofocus="autofocus" class="form-control tf-busca" ng-model="criterioDeBusca" placeholder="Pesquisar...">
+		</div>
+		<table class="table borderless">
+			<tr class="cr-thead">
+				<th class="text-center col-sm-1">
+					<a class="btn btn-xs tf-a" title="Selecionar todos" data-placement="top" ng-click="selecionarTodos()">
+						<span class="glyphicon glyphicon-check"></span>
+					</a>
+				</th>
+				<th class="text-center col-sm-1">
+					<a href="#" class="tf-a">Código</a>
+				</th>
+				<th class="col-sm-4">
+					<a href="#" class="tf-a" ng-click="ordenarPor('descricao')">Descrição</a>
+					</th>
+				<th class="text-center col-sm-1">
+					<a href="#" class="tf-a" ng-click="ordenarPor('dataCadastro')">Cadastro</a>
+				</th>
+				<th class="text-center col-sm-1">
+					<a href="#" class="tf-a" ng-click="ordenarPor('dataFinalizacao')">Finalização</a>
+				</th>
+				<th class="text-center col-sm-1"">
+					<a href="#" class="tf-a" ng-click="ordenarPor('status')">Status</a>
+				</th>
+				<th class="text-center col-sm-1">
+					<a class="btn btn-xs tf-a" title="Opções" data-placement="top">
+						<span class="glyphicon glyphicon-wrench"></span>
+					</a>
+				</th>
+			</tr>
+
+			<!-- linha escondida para inserção de nova tarefa -->
+			<form name="novaTarefaForm">
+				<tr class="nova-tarefa" ng-show="novaTarefa">
+					<td class="text-center">
+						<div class="novo-campo">n/a</div>
+					</td>
+					<td class="text-center">
+						<div class="novo-campo">n/a</div>
+					</td>
+					<td>
+						<input type="text" class="form-control input-novo" ng-model="tarefa.descricao" placeholder="Digite a descrição..." />
+					</td>
+					<td class="text-center">
+						<div class="novo-campo">{{now() | date: 'dd/MM/yyyy'}}</div>
+					</td>
+					<td class="text-center">
+						<div class="novo-campo">n/a</div>
+					</td>
+					<td class="text-center">
+					<div class="novo-campo">PENDENTE</div>
+					</td>
+					<td class="text-center">
+						<a class="btn btn-lg btn-salvar" title="Salvar nova tarefa" ng-click="adicionar(tarefa)">
+							<span class="glyphicon glyphicon-download-alt"></span>
+						</a>
+					</td>
+				</tr>
+			</form>
+			<!-- ============================================ -->
+			
+			<tr ng-class="{'selecionado': tarefa.selecionada, 'tf-row': !tarefa.selecionada}" 
+				ng-repeat="tarefa in tarefas | filter: {descricao: criterioDeBusca} | orderBy: criterioDeOrdenacao: direcaoDaOrdenacao">
+				<td class="text-center">
+            	<input type="checkbox" ng-model="tarefa.selecionada">
+				</td>
+				<td class="text-center">{{tarefa.id}}</td>
+				<td>{{tarefa.descricao}}</td>
+				<td class="text-center">{{tarefa.dataCadastro}}</td>
+				<td class="text-center">{{tarefa.dataFinalizacao}}</td>
+				<td class="text-center">
+					<span class="label label-block"
+						ng-class="{'label-sel': tarefa.selecionada,
+									  'label-warning': tarefa.status == 'INICIADA',
+									  'label-success': tarefa.status == 'CONCLUIDA',
+									  'label-primary': tarefa.status == 'PENDENTE'}">
+						{{tarefa.status}}
+					</span>
+				</td>
+				<td class="text-center">
+					<a class="btn btn-xs" ng-class="{
+								'tool-icon-sel': tarefa.selecionada, 
+								'tool-icon': !tarefa.selecionada}" 
+						title="Editar" data-placement="top">
+						<span class="glyphicon glyphicon-pencil"></span>
+					</a>
+					<a class="btn btn-xs" ng-class="{
+								'tool-icon-sel': tarefa.selecionada, 
+								'tool-icon': !tarefa.selecionada,
+								'hidden': tarefa.status != 'PENDENTE'}"
+						title="Iniciar" data-placement="top" ng-click="iniciar(tarefa.id)">
+						<span class="glyphicon glyphicon-play"></span>
+					</a>
+					<a class="btn btn-xs" ng-class="{
+								'tool-icon-sel': tarefa.selecionada, 
+								'tool-icon': !tarefa.selecionada,
+								'hidden': tarefa.status != 'INICIADA'}"
+						title="Resetar" data-placement="top" ng-click="resetar(tarefa.id)">
+						<span class="glyphicon glyphicon-stop"></span>
+					</a>
+					<a class="btn btn-xs" ng-class="{
+								'tool-icon-sel': tarefa.selecionada,
+								'tool-icon': !tarefa.selecionada,
+								'hidden': tarefa.status != 'INICIADA'}"
+						title="Finalizar" data-placement="top" ng-click="finalizar(tarefa.id)">
+						<span class="glyphicon glyphicon-ok"></span>
+					</a>
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>
+</body>
+</html>		
