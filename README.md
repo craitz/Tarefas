@@ -1,5 +1,5 @@
 # Tarefas API
 
-<h3>Demonstração de Web Service que oferece serviços para o gerenciamento de uma lista de tarefas.</h3>
+<h4><i>Demonstração de Web Service que oferece serviços para o gerenciamento de uma lista de tarefas.</i></h4>
 
- <u>API RESTful</u> num </u>Web Service</u> com <b>Spring Data</b>, <b>Spring Boot</b> e <b>Spring Security</b> efetuando operações num banco de dados <b>H2</b> com <b>JPA</b> + <b>Hibernate</b>, rodando num servidor de aplicações Apache <b>Tomcat</b>, utilizando a IDE <b>Spring Tool Suite</b>. 
+ <i>API RESTful</i> num </i>Web Service</i> com <i>Spring Data</i>, <i>Spring Boot</i> e <i>Spring Security</i> efetuando operações num banco de dados <i>H2</i> com <i>JPA</i> + <i>Hibernate</i>, rodando num servidor de aplicações Apache <i>Tomcat</i>, utilizando a IDE <i>Spring Tool Suite</i>. 
